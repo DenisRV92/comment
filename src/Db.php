@@ -16,10 +16,11 @@ class Db
     private $password = 'root';
     private $conn;
 
+
     /**
-     * Создаем базу данных и подключаемся к ней
+     * @return void
      */
-    public function connect()
+    public function connect(): void
     {
 
         try {
@@ -41,10 +42,9 @@ class Db
 
 
     /**
-     * Получает единственный экземпляр класса (Singleton) и устанавливает подключение к базе данных
-     * @return self объект-экземпляр данного класса
+     * @return Db|null
      */
-    public static function getInstance()
+    public static function getInstance(): ?Db
     {
         if (self::$instance === null) {
             self::$instance = new self();
@@ -58,7 +58,7 @@ class Db
      * Возвращает текущее подключение к БД
      * @return PDO
      */
-    public function getConnection()
+    public function getConnection(): PDO
     {
         return $this->conn;
     }
